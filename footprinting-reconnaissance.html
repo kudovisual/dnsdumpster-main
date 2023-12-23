@@ -1,0 +1,280 @@
+
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="vAWNZCy-5XAPGRgA2_NY5HictfnByvgpqOLQUAmVZW0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A footprinting and reconnaissance deep dive. Learn the tactics used by the experts and take your attack surface discovery to the next level.">
+    <meta name="author" content="">
+    <link rel="icon" href="https://dnsdumpster.com/static/favicon.ico">
+    <title>Footprinting and Reconnaissance with DNSdumpster.com</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/cover.css?v=1.4" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="site-wrapper">
+      <div class="site-wrapper-inner">
+<!-- Section 1 -->
+<section id="intro" data-speed="6" data-type="background">
+    <div class="container">
+
+   <div class="masthead clearfix">
+   <div class="container inner">
+        <nav>
+       <ul class="nav masthead-nav">
+   <li><a href="https://dnsdumpster.com/" data-toggle="tooltip"  data-placement="bottom" title="Home"><i style="font-size: 1.2em;" class="fa fa-home"></i></a></li>
+   <li><a href="/osint-network-defenders/"  data-toggle="tooltip"  data-placement="bottom" title="Defend"><i style="font-size: 1.2em;" class="fa fa-shield" aria-hidden="true"></i></a></li>
+   <li><a href="/footprinting-reconnaissance/" data-placement="bottom" data-toggle="tooltip" title="Learn"><i style="font-size: 1.2em;" class="fa fa-mortar-board" aria-hidden="true"></i></a></li>
+   <li><a href="https://hackertarget.com/" data-toggle="tooltip" title="Online Vulnerability Scanners"><i style="font-size: 1.2em; color: #00CC00;" class="fa fa-bullseye"></i></a></li>
+       </ul>
+        </nav>
+   </div>
+   </div>
+
+
+
+
+        <div class="cover-container">
+            <h1 class="cover-heading" style="margin-top: 60px; font-size: 2.4em; text-align: left;">Get Started; Footprinting and Reconnaissance</h1>
+<div style="text-align: left;">
+<P>Quickly mapping an organisations attack surface is an essential skill for network attackers (penetration testers, bug bounty hunters or Mr Robot) as well as those who are defending the network (network security folks, system administrators, blue teams etc).</P>
+
+<P>A detailed footprint of an organisations Internet facing systems is a tactical resource that can be used by both attackers and defenders. By developing an understanding of the attack surface skilled security analysts are able to quickly identify weak areas in the attack surface.</P>
+
+<P>Discovered assets such as old servers, custom web applications and forgotten services are often the first crumbs in a trail that leads to a compromise.</P>
+
+<h2 class="text-muted">Attack Surface Discovery is a Time Critical Process</h2>
+
+<P>The <b>Blue Team</b> needs to understand the tactics that penetration testers and bug bounty hunters are using to map the attack surface. These tactics will often be also employed by targeted attackers. By quickly identifying weak areas in your attack surface you will enable prioritisation of mitigation to defend those systems and applications.</P>
+
+<P><b>Penetration Testers</b> need to quickly identify the weak spots so that they can gain access and ensure that the engagement is successful. The nature of a penetration test is time constrained so the faster areas to attack are identified the more likely the test will be a success.</P>
+
+<P><b>Bug Bounty Hunters</b> need to quickly identify weak spots to find the bugs and get the bounty. Since a hunter is competing against others in the race to find bugs, being faster can often mean getting paid. This is not to say that more involved deeper bug discoveries do not take time to develop, but a quick wins give you time to go for more.</P>
+
+<h2 class="text-muted">Footprinting a Domain is an Iterative Process</h2>
+
+<P>After working through the process of footprinting a domain, you will quickly realise how it is a cyclic process. The output from searching against the domain, provides new inputs into the same domain search process. This can go on for quite some time, with both <b>time</b> and <b>scope</b> factors in the value of continuing the discovery.</P>
+
+<div style="text-align: center; font-size: 1.4em;">
+<h5 style="margin-top: 40px;">Overview of the Network Discovery Process</h5>
+<img style="margin-bottom: 40px; max-width: 100%" title="The cyclic process of Footprinting Domains" src="/static/footprint-domains.png">
+</div>
+
+<h4 style="color: red;">Paying Attention to Scope</h4>
+
+<P>As you discover assets and networks, pivoting to new areas of interest it is very important that you pay attention to the scope of your engagement. Both penetration tests and bug bounties often have a defined scope. If you start active scanning against areas outside of the scope, you may quickly end up getting into trouble or at the very least appear unprofessional. If you discover things of Interest outside the scope, take note and include your passive findings in the report or consult with the program / engagement contact to see if it could be included.</P>
+
+<h2 class="text-muted">Secrets of DNSDumpster</h2>
+
+<P>The domain search is the most obvious report that users will find useful when utilising <a href="https://dnsdumpster.com/">DNSDumpster</a>. There are a number of not so obvious features that will rapidly increase the attack surface. Take your reconnaissance from a quick overview to actionable intelligence.</P>
+
+<h4>Pivot to Identify Service Banners of a Netblock</h4>
+
+<P>Each discovered host has the an option to search the netblock that the host is sitting in for banners that have been discovered through Internet wide scans. Think of this like target focused searches of scans.io, censys or shodan.</P>
+
+<p>Banners are available for the following TCP ports. These have been selected as they are common services, with banners that often reveal operating system and other useful data.</p>
+<div style="text-align: center; font-size: 1.4em;">
+<div class="row" style="margin-left: 20px; margin-right: 20px;">
+   <div class="col-sm-4 col-md-2 label label-default">FTP (21)</div>
+   <div class="col-sm-4 col-md-2 label label-default">SSH (22)</div>
+   <div class="col-sm-4 col-md-2 label label-default">Telnet (23)</div>
+   <div class="col-sm-4 col-md-2 label label-default">HTTP (80)</div>
+   <div class="col-sm-4 col-md-2 label label-default">HTTPS (443)</div>
+   <div class="col-sm-4 col-md-2 label label-default">HTTP/Proxy (8080)</div>
+</div>
+<h5 style="margin-top: 40px;">Banner search example</h5>
+<img style="margin-bottom: 40px; max-width: 100%" title="Search Banners of a Netblock" src="/static/banners.png">
+</div>
+
+<P>Further discovery will be required further down the assessment process with <a href="https://hackertarget.com/nmap-online-port-scanner/">port scans</a> and other network based scanning. For now the benefit of these banners is a quick overview to identify operating system and server role which can reveal the security posture of the organisation.</P>
+
+<P>The netblock may be a hosted range operated by a third party company where the other hosts within the range are not of interest. However, if the range is operated by the target organisation the banners can reveal additional hosts of interest that are not present in the DNS only reports.</P>
+
+<P>To search for the banners of a network you can simply enter the <b>CIDR notation</b> of the network in the DNSDumpster search field.</P>
+
+<h4>Discover Web Sites Present on a Host</h4>
+
+<P>A common web hosting feature is the use of virtual hosts. That is hosting multiple web sites on a single web server, using different A records for the sites.</P>
+
+<P>Using the <a href="https://hackertarget.com/reverse-ip-lookup/" data-toggle="tooltip" title="Reverse IP Search for Hosts Sharing and IP Address">HackerTarget.com Reverse IP Search</a> API the host search button in the record can reveal other web sites hosted on the server. These may have vulnerabilities or weakness that lead to compromise of the underlying host.</P>
+
+<div style="text-align: center; font-size: 1.4em;">
+<h5 style="margin-top: 40px;">Reverse IP Search for other Host Names</h5>
+<img style="margin-bottom: 40px; max-width: 100%" title="Reverse IP Search" src="/static/reverse-ip-search.png">
+</div>
+
+<h4>Shared DNS Servers</h4>
+
+<P>If the organisation hosts its own name servers then the attack surface can be increased significantly by finding all the domains that the organisation is hosting on those name servers.</P>
+
+<P>This can be done by doing a Reverse DNS Name Server search against a DNS data set. For example ns1.exampletarget.com, is the primary server for our organisation. By searching the data set for all NS records that point to ns1.exampletarget.com we reveal all the domains that are configured on this server.</P>
+
+<div style="text-align: center; font-size: 1.4em;">
+<h5 style="margin-top: 40px;">Shared DNS Search example</h5>
+<img style="margin-bottom: 40px; max-width: 100%" title="Find Hosts Sharing a DNS Server" src="/static/shared-dns-servers.png">
+</div>
+
+<P>We can then pivot to search for the newly discovered domains, once again looking for new IP addresses, host names and web sites to assess.</P>
+
+<h4>SPF TXT Records</h4>
+
+<P>The SPF record is a benefit to anti-spam efforts for an organisation. It basically is a  record of IP addresses that are allowed to send email for the domain. This can mean that the SPF record may contain IP addresses for netblocks that are otherwise not found using other DNS reconnaissance.</P>
+
+<P>Perhaps the IP range of the organisations office network. It does not have any services hosted within the netblock, but there is an internal mail server that needs to send email outbound so it is listed in the SPF record or maybe there is a monitoring server that needs to send email notifications.</P>
+
+<h2 class="text-muted">Wrapping Up</h2>
+
+<P>This introduction to footprinting and reconnaissance has barely scratched the surface of the possibilities in OSINT discovery. If you are just getting started; get familiar with these DNS focused enumeration techniques and soak up as much knowledge as you can. It is a great time to get into the field of security testing; start to play with Capture the Flag (CTF's), then try some Bug Bounties and get ready to learn. Persistence and creativity will go a long way.</P>
+
+<P>For more information check out the <a href="http://reconvillage.org/talks/">Recon Village</a> archived talks from Defcon. Also, keep in touch by signing up the mailing list below. New additions will be added to this page and <a href="https://dnsdumpster.com/">dnsdumpster.com</a> in the near future.
+</div>
+
+</div>
+
+
+
+
+
+
+
+<div class="container" style="text-align: left; margin-top: 80px;">
+
+</div></div></div></div>
+
+
+<footer>
+<div class="row" style="background-color: #1e1e1e; padding-top: 40px; padding-bottom: 20px;"><div class="container">
+<div class="col-md-6 col-sm-12 right-border" style="text-align: center;">
+<div class="footer-about" style="text-align: left; padding-left: 40px;">
+<h2 class="footer-title" style="font-size: 1.8em;">About</h2>
+<p style="margin-top: 20px;">At <a href="https://hackertarget.com/">hackertarget.com</a>, we have been scanning the Internet since 2007. Our vulnerability scanners now reach millions of IP addresses every year. We work to raise awareness of the value in open source security solutions.</p>
+</div>
+</div>
+<div class="col-md-6 col-sm-12">
+<div class="contact-info" style="text-align: left; padding-left: 40px;">
+<h2 class="footer-title" style="font-size: 1.8em;">Stay in Touch</h2>
+
+<div class="single">
+        <p><i style="font-size: 1.2em;" class="fa fa-envelope"></i> dnsdumpster@gmail.com</p>
+</div>
+<div class="single">
+        <p><i style="font-size: 1.2em;" class="fa fa-twitter"></i> <a href="https://twitter.com/hackertarget/">@hackertarget</a></p>
+</div>
+<!-- Begin MailChimp Signup Form -->
+<link href="https://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+    #mc_embed_signup{background:#1e1e1e; clear:left; font:14px Helvetica,Arial,sans-serif; width:100%;}
+        /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+               We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+               </style>
+               <div id="mc_embed_signup">
+               <form action="https://dnsdumpster.us17.list-manage.com/subscribe/post?u=3cbc62d931a69e74b2c856f1a&amp;id=532c46ab39" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                   <div id="mc_embed_signup_scroll" style="text-align: left;">
+
+                        <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+                            <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                                <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_3cbc62d931a69e74b2c856f1a_532c46ab39" tabindex="-1" value=""></div><br>
+                                    <div class="clear" style="margin-top: 5px;"><input type="submit" style="background-color: #00CC00;" value="Subscribe to our List" name="subscribe" id="mc-embedded-subscribe" class="button"> <span style="font-size: 0.8em;">Low volume Updates and News</a></div>
+                                        </div>
+                                        </form>
+                                        </div>
+
+                                        <!--End mc_embed_signup-->
+
+</div>
+</div>
+</div>
+<div class="clearfix"></div>
+<div class="copyright" style="background-color: #1e1e1e; margin-top: 20px;">
+<p>Copyright &copy; 2023 Hacker Target Pty Ltd</p>
+</div>
+</div>
+</div>
+</div>
+</footer>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+
+
+
+
+
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+
+
+
+<script type="text/javascript">
+            $(document).ready(function() {
+$('[data-toggle="tooltip"]').tooltip({'placement': 'top'});
+
+            }); //END $(document).ready()
+
+
+$('a.external').on('click', function(e) {
+        e.preventDefault();
+        var url = $(this).attr('href');
+        $(".modal-body").html('<iframe style="background-color: #ccc;" width="100%" height="100%" frameborder="0" scrolling="yes" allowtransparency="true" src="'+url+'"></iframe>');
+ 
+    });
+ 
+    $('#myModal').on('show.bs.modal', function () {
+ 
+        $(this).find('.modal-dialog').css({
+                  width:'90%', //choose your width
+                  height:'80%',
+                  'padding':'5'
+           });
+         $(this).find('.modal-content').css({
+                  height:'100%', 
+                  'border-radius':'0',
+                  'padding':'5'
+           });
+         $(this).find('.modal-body').css({
+                  width:'auto',
+                  height:'100%', 
+                  'padding':'5'
+           });
+    })
+
+        </script>
+
+<script>
+$(document).ready(function(){
+  $("#showloading").hide();
+  $("#formsubmit").click(function(){
+    $("#hideform").hide();
+    $("#showloading").show();
+  });
+
+});
+</script>
+ 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FPGN9YXFNE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FPGN9YXFNE');
+</script> 
+
+</body></html>
